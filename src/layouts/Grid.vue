@@ -7,11 +7,10 @@ import {
   RowStyle,
   themeAlpine,
 } from "ag-grid-community";
-import { configStore, dataStore, type translation } from "@/modules/params";
+import { dataStore, type translation } from "@/modules/params";
 import { openXMLFile } from "@/modules/appModules";
 
 const data = dataStore();
-const config = configStore();
 
 onMounted(() => {
   const unlisten = listen("tauri://drag-drop", async (event) => {
