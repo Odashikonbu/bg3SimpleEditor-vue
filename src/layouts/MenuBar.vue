@@ -6,12 +6,12 @@ import Menu from '@/volt/Menu.vue';
 import Checkbox from '@/volt/Checkbox.vue';
 import Dialog from '@/volt/Dialog.vue'; 
 import InputText from '@/volt/InputText.vue';
-import { configStore, dialogVisible } from '@/modules/params';
+import { configStore, dataStore, dialogVisible } from '@/modules/params';
 
 import '/node_modules/flag-icons/css/flag-icons.min.css';
-import { replaceTranslation } from '@/modules/appModules';
 
 const config = configStore();
+const data = dataStore()
 
 const seartchText = ref<string>("");
 const replaceText = ref<string>("");
@@ -20,6 +20,18 @@ const replaceText = ref<string>("");
 //language
 const languageMenu = ref();
 const languageMenuToggle = (event:Event) => { languageMenu.value.toggle(event);};
+
+const replaceTranslation = (searchText: string, replaceText: string) => {
+  const newData = [...data.translation]
+  newData.forEach((items) => {
+    if(items.translatedText){
+      items.translatedText = items.translatedText.replaceAll(searchText, replaceText);
+    }
+  })
+
+  data.translation = newData;
+}
+
 </script>
 <template>
   <section>

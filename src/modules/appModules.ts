@@ -354,10 +354,3 @@ export const loadTranslation = async():Promise<void> => {
     return;
   }
 }
-
-export const replaceTranslation = (searchText: string, replaceText: string) => {
-  const data = dataStore()
-  data.translation.forEach((items) => {
-    items.translatedText = items.translatedText.replaceAll(searchText, replaceText);
-  })
-}

@@ -44,7 +44,7 @@ const completeTranslation = computed(() => data.translation.filter((item) => ite
       <div class="flex-1"></div>
       <div class="flex flex-row gap-x-2 items-center">
         <span class="text-end">{{ completeTranslation }} / {{ data.translation.length }}</span>
-        <ProgressBar :value="completeTranslation / data.translation.length * 100" class="w-[100px] h-[20px] mr-4"></ProgressBar>
+        <ProgressBar :value="Math.floor(completeTranslation / data.translation.length * 100)" class="w-[100px] h-[20px] mr-4"></ProgressBar>
       </div>
     </section>
   </footer>
