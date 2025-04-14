@@ -68,7 +68,7 @@ export const openXMLFile = async(path: string):Promise<void> => {
     data.displayMessage.message = `loaded xml: ${await basename(path)}`;
 
     if(config.autoTranslation){
-      await applyMasterDictionary();
+      applyMasterDictionary();
     }
 
     return;

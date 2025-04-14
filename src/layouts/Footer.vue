@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import Button from "@/volt/Button.vue";
+import ProgressBar from '@/volt/ProgressBar.vue';
 import { dataStore } from "@/modules/params";
 import { loadTranslation, saveMasterDictionary, writeXMLFile } from "@/modules/appModules";
+
 const data = dataStore();
+const completeTranslation = computed(() => data.translation.filter((item) => item.originText != item.translatedText).length);
 </script>
 <template>
   <footer class="flex flex-col max-sm:text-sm">
@@ -37,7 +41,11 @@ const data = dataStore();
         ]"
         >{{ data.displayMessage.message }}</span
       >
-      <div class="flex-1" />
+      <div class="flex-1"></div>
+      <div class="flex flex-row gap-x-2 items-center">
+        <span class="text-end">{{ completeTranslation }} / {{ data.translation.length }}</span>
+        <ProgressBar :value="completeTranslation / data.translation.length * 100" class="w-[100px] h-[20px] mr-4"></ProgressBar>
+      </div>
     </section>
   </footer>
 </template>
