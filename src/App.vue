@@ -51,6 +51,10 @@ const initHotkey = () => {
     clearData();
   })
 
+  hotkeys("ctrl+f", function(event){
+    event.preventDefault();
+  })
+
   hotkeys("ctrl+r", function(event){
     event.preventDefault();
     dialogVisible.value = !dialogVisible.value;
