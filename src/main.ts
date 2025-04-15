@@ -9,6 +9,7 @@ import 'primeicons/primeicons.css';
 import "./App.css";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
+document.oncontextmenu = function () {return false;}
 
 createApp(App)
   .use(createPinia().use(piniaPluginPersistedstate))
